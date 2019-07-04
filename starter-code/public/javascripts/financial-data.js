@@ -3,11 +3,8 @@ const getBtcPrice = () => {
 		const startDate = document.getElementById("start-date").value;
 		const endDate = document.getElementById("end-date").value;
 		const currency = document.getElementById("currency").value;
-		console.log(currency);
 		// const url = `https://api.coindesk.com/v1/bpi/historical/close.json?start=${startDate}&end=${endDate}`;
 		const url = `https://api.coindesk.com/v1/bpi/historical/close.json?start=${startDate}&end=${endDate}&currency=${currency}`;
-		// const url = "https://api.coindesk.com/v1/bpi/historical/close.json?index=[CNY]"
-		// const url = "https://api.coindesk.com/v1/bpi/historical/close.json?"
 
 		axios
 			.get(url)
@@ -17,6 +14,12 @@ const getBtcPrice = () => {
 				const prices = Object.values(data.bpi);
 
 				console.log(dates, prices);
+
+				let minVal = prices[0];
+				let maxVal = prices[prices.length - 1];
+				console.log(minVal);
+				document.getElementById("min-val").innerText = minVal;
+				document.getElementById("max-val").innerText = maxVal;
 
 				const ctx = document
 					.getElementById("stock-chart")
