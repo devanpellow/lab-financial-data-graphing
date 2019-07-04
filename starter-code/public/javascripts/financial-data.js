@@ -15,11 +15,11 @@ const getBtcPrice = () => {
 
 				console.log(dates, prices);
 
-				let minVal = prices[0];
-				let maxVal = prices[prices.length - 1];
+				let minVal = prices[0].toFixed(2);
+				let maxVal = prices[prices.length - 1].toFixed(2);
 				console.log(minVal);
-				document.getElementById("min-val").innerText = minVal;
-				document.getElementById("max-val").innerText = maxVal;
+				document.getElementById("min-val").innerText = (minVal + " " + currency);
+				document.getElementById("max-val").innerText = (maxVal + " " + currency);
 
 				const ctx = document
 					.getElementById("stock-chart")
